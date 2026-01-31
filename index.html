@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bever Family Backyard Birds</title>
+    <title>Bever Backyard Birds</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
@@ -261,6 +261,84 @@
             font-size: 1rem;
         }
 
+        /* Search and Filter Controls */
+        .filter-controls {
+            margin-bottom: 32px;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px 14px 48px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: var(--text-dim);
+            pointer-events: none;
+        }
+
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .filter-pill {
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-pill:hover {
+            border-color: var(--border);
+            color: var(--text-primary);
+        }
+
+        .filter-pill.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .filter-pill .filter-icon {
+            margin-right: 6px;
+        }
+
         /* Bird Grid */
         .bird-grid {
             display: grid;
@@ -284,6 +362,10 @@
             background: var(--bg-card-hover);
             border-color: var(--border);
             transform: translateY(-2px);
+        }
+
+        .bird-card.hidden {
+            display: none;
         }
 
         .bird-image-wrapper {
@@ -315,11 +397,20 @@
         .bird-name {
             font-weight: 600;
             font-size: 1rem;
-            color: var(--text-primary);
             margin-bottom: 2px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        .bird-name a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .bird-name a:hover {
+            color: var(--accent);
         }
 
         .bird-scientific {
@@ -372,6 +463,10 @@
             margin-bottom: 0;
         }
 
+        .bird-group.hidden {
+            display: none;
+        }
+
         .group-header {
             display: flex;
             align-items: center;
@@ -398,6 +493,244 @@
             background: var(--bg-secondary);
             padding: 4px 12px;
             border-radius: 100px;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .no-results.visible {
+            display: block;
+        }
+
+        .no-results .emoji {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: 0.6;
+        }
+
+        /* Insights Tab Styles */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .insight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .insight-card:hover {
+            border-color: var(--border);
+        }
+
+        .insight-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .insight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .insight-icon {
+            font-size: 1.5rem;
+        }
+
+        .insight-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Activity Heatmap */
+        .heatmap-container {
+            overflow-x: auto;
+        }
+
+        .heatmap {
+            display: flex;
+            gap: 4px;
+            min-width: 500px;
+        }
+
+        .heatmap-hour {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .heatmap-bar-container {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .heatmap-bar {
+            width: 80%;
+            background: linear-gradient(to top, var(--accent-dim), var(--accent));
+            border-radius: 4px 4px 0 0;
+            min-height: 4px;
+            transition: height 0.5s ease;
+        }
+
+        .heatmap-label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+
+        /* Top 10 Chart */
+        .top-birds-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .top-bird-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .top-bird-rank {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            width: 28px;
+            text-align: center;
+        }
+
+        .top-bird-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: var(--bg-secondary);
+        }
+
+        .top-bird-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .top-bird-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .top-bird-name a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .top-bird-name a:hover {
+            color: var(--accent);
+        }
+
+        .top-bird-bar-container {
+            flex: 1;
+            height: 24px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .top-bird-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            min-width: 40px;
+            transition: width 0.5s ease;
+        }
+
+        .top-bird-count {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--bg-primary);
+        }
+
+        /* New This Month */
+        .new-birds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .new-bird-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .new-bird-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .new-bird-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 10px;
+            background: var(--bg-card);
+        }
+
+        .new-bird-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .new-bird-name a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .new-bird-name a:hover {
+            color: var(--accent);
+        }
+
+        .new-bird-date {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+
+        .new-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-primary);
+            font-size: 0.6rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 8px;
         }
 
         /* Loading State */
@@ -516,8 +849,8 @@
 
             .tab-btn {
                 flex: 1;
-                padding: 12px 16px;
-                font-size: 0.85rem;
+                padding: 12px 12px;
+                font-size: 0.8rem;
             }
 
             .bird-grid {
@@ -531,6 +864,19 @@
             .bird-image {
                 width: 56px;
                 height: 56px;
+            }
+
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-filters {
+                gap: 6px;
+            }
+
+            .filter-pill {
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
         }
 
@@ -549,7 +895,7 @@
                 <span class="dot"></span>
                 Live from Indiana
             </div>
-            <h1>Bever Family <span class="accent">Backyard</span> Birds</h1>
+            <h1>Bever <span class="accent">Backyard</span> Birds</h1>
             <p class="hero-subtitle">Real-time bird detections from our BirdNET-Pi, powered by machine learning and a passion for nature.</p>
             
             <div class="stats-grid">
@@ -575,6 +921,7 @@
         <nav class="tab-nav">
             <button class="tab-btn active" data-tab="today">Today's Birds</button>
             <button class="tab-btn" data-tab="all">All Species</button>
+            <button class="tab-btn" data-tab="insights">Insights</button>
         </nav>
 
         <!-- Today Tab -->
@@ -597,10 +944,84 @@
                 <h2>Complete Species List</h2>
                 <p>Every bird we've ever detected, organized by type</p>
             </div>
+            
+            <!-- Search and Filters -->
+            <div class="filter-controls">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="bird-search" placeholder="Search for a bird...">
+                </div>
+                <div class="category-filters" id="category-filters">
+                    <button class="filter-pill active" data-category="all">
+                        All Birds
+                    </button>
+                    <!-- Category filters will be populated dynamically -->
+                </div>
+            </div>
+            
+            <div id="no-results" class="no-results">
+                <div class="emoji">🔍</div>
+                <p>No birds found matching your search.</p>
+            </div>
+            
             <div id="all-birds">
                 <div class="loading">
                     <div class="loading-spinner"></div>
                     <p>Loading species library...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insights Tab -->
+        <div id="insights-tab" class="tab-content">
+            <div class="section-header">
+                <h2>Bird Activity Insights</h2>
+                <p>Patterns and trends from our backyard observations</p>
+            </div>
+            
+            <div class="insights-grid">
+                <!-- Activity Heatmap -->
+                <div class="insight-card full-width">
+                    <div class="insight-header">
+                        <span class="insight-icon">🌅</span>
+                        <span class="insight-title">Activity by Hour</span>
+                    </div>
+                    <div class="heatmap-container">
+                        <div class="heatmap" id="activity-heatmap">
+                            <div class="loading">
+                                <div class="loading-spinner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Top 10 Birds -->
+                <div class="insight-card">
+                    <div class="insight-header">
+                        <span class="insight-icon">🏆</span>
+                        <span class="insight-title">Top 10 Most Heard</span>
+                    </div>
+                    <div class="top-birds-list" id="top-birds">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- New This Month -->
+                <div class="insight-card">
+                    <div class="insight-header">
+                        <span class="insight-icon">✨</span>
+                        <span class="insight-title">New This Month</span>
+                    </div>
+                    <div class="new-birds-grid" id="new-birds">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -625,16 +1046,20 @@
         const BIRDWEATHER_TOKEN = 'wxwgf1oSz88qGYZNPsDajxW3';
         const API_BASE = 'https://app.birdweather.com/api/v1';
 
+        // Store all species data globally for filtering
+        let allSpeciesData = [];
+        let activeCategory = 'all';
+        let searchQuery = '';
+
         // Bird classification by family/type
-        // Maps common patterns in bird names to categories
         const BIRD_CATEGORIES = {
-            'Raptors & Birds of Prey': {
+            'Raptors': {
                 icon: '🦅',
                 keywords: ['Hawk', 'Eagle', 'Falcon', 'Owl', 'Vulture', 'Kite', 'Osprey', 'Harrier', 'Kestrel']
             },
             'Songbirds': {
                 icon: '🎵',
-                keywords: ['Sparrow', 'Finch', 'Warbler', 'Wren', 'Thrush', 'Robin', 'Bluebird', 'Cardinal', 'Bunting', 'Tanager', 'Oriole', 'Grosbeak', 'Towhee', 'Junco', 'Chickadee', 'Titmouse', 'Nuthatch', 'Creeper', 'Kinglet', 'Vireo', 'Catbird', 'Thrasher', 'Mockingbird', 'Starling', 'Waxwing', 'Goldfinch', 'Siskin', 'Redpoll', 'Crossbill', 'Pine Siskin']
+                keywords: ['Sparrow', 'Finch', 'Warbler', 'Wren', 'Thrush', 'Robin', 'Bluebird', 'Cardinal', 'Bunting', 'Tanager', 'Oriole', 'Grosbeak', 'Towhee', 'Junco', 'Chickadee', 'Titmouse', 'Nuthatch', 'Creeper', 'Kinglet', 'Vireo', 'Catbird', 'Thrasher', 'Mockingbird', 'Starling', 'Waxwing', 'Goldfinch', 'Siskin', 'Redpoll', 'Crossbill']
             },
             'Woodpeckers': {
                 icon: '🪵',
@@ -642,57 +1067,37 @@
             },
             'Corvids': {
                 icon: '🖤',
-                keywords: ['Crow', 'Raven', 'Jay', 'Magpie', 'Jackdaw', 'Rook']
+                keywords: ['Crow', 'Raven', 'Jay', 'Magpie']
             },
-            'Waterfowl & Waterbirds': {
+            'Waterfowl': {
                 icon: '🦆',
-                keywords: ['Duck', 'Goose', 'Swan', 'Heron', 'Egret', 'Crane', 'Bittern', 'Cormorant', 'Pelican', 'Loon', 'Grebe', 'Coot', 'Moorhen', 'Gallinule', 'Rail', 'Ibis', 'Spoonbill', 'Stork', 'Merganser', 'Teal', 'Mallard', 'Pintail', 'Shoveler', 'Wigeon', 'Gadwall', 'Scaup', 'Canvasback', 'Redhead', 'Bufflehead', 'Goldeneye']
+                keywords: ['Duck', 'Goose', 'Swan', 'Heron', 'Egret', 'Crane', 'Bittern', 'Cormorant', 'Pelican', 'Loon', 'Grebe', 'Coot', 'Moorhen', 'Gallinule', 'Rail', 'Ibis', 'Merganser', 'Teal', 'Mallard']
             },
             'Shorebirds': {
                 icon: '🏖️',
-                keywords: ['Sandpiper', 'Plover', 'Killdeer', 'Snipe', 'Woodcock', 'Curlew', 'Godwit', 'Yellowlegs', 'Dowitcher', 'Dunlin', 'Sanderling', 'Turnstone', 'Phalarope', 'Avocet', 'Stilt', 'Oystercatcher']
-            },
-            'Gulls & Terns': {
-                icon: '🌊',
-                keywords: ['Gull', 'Tern', 'Skimmer', 'Jaeger', 'Kittiwake']
+                keywords: ['Sandpiper', 'Plover', 'Killdeer', 'Snipe', 'Woodcock', 'Curlew', 'Godwit', 'Yellowlegs']
             },
             'Gamebirds': {
                 icon: '🦃',
-                keywords: ['Turkey', 'Pheasant', 'Quail', 'Grouse', 'Partridge', 'Bobwhite', 'Prairie-Chicken', 'Ptarmigan']
+                keywords: ['Turkey', 'Pheasant', 'Quail', 'Grouse', 'Bobwhite']
             },
-            'Doves & Pigeons': {
+            'Doves': {
                 icon: '🕊️',
                 keywords: ['Dove', 'Pigeon']
             },
-            'Hummingbirds & Swifts': {
+            'Hummingbirds': {
                 icon: '💨',
                 keywords: ['Hummingbird', 'Swift']
             },
-            'Swallows & Martins': {
-                icon: '🌤️',
-                keywords: ['Swallow', 'Martin']
-            },
-            'Blackbirds & Grackles': {
+            'Blackbirds': {
                 icon: '⬛',
                 keywords: ['Blackbird', 'Grackle', 'Cowbird', 'Meadowlark', 'Bobolink']
             },
             'Flycatchers': {
                 icon: '🪰',
-                keywords: ['Flycatcher', 'Phoebe', 'Pewee', 'Kingbird', 'Wood-Pewee']
+                keywords: ['Flycatcher', 'Phoebe', 'Pewee', 'Kingbird']
             },
-            'Cuckoos & Allies': {
-                icon: '🐦',
-                keywords: ['Cuckoo', 'Roadrunner', 'Ani']
-            },
-            'Nightjars': {
-                icon: '🌙',
-                keywords: ['Nighthawk', 'Whip-poor-will', 'Chuck-will', 'Nightjar', 'Poorwill']
-            },
-            'Kingfishers': {
-                icon: '🐟',
-                keywords: ['Kingfisher']
-            },
-            'Other Birds': {
+            'Other': {
                 icon: '🐦',
                 keywords: []
             }
@@ -701,11 +1106,18 @@
         function categorizeBird(birdName) {
             const name = birdName.toLowerCase();
             for (const [category, data] of Object.entries(BIRD_CATEGORIES)) {
+                if (category === 'Other') continue;
                 if (data.keywords.some(keyword => name.includes(keyword.toLowerCase()))) {
                     return category;
                 }
             }
-            return 'Other Birds';
+            return 'Other';
+        }
+
+        function getCornellUrl(scientificName) {
+            // Convert scientific name to eBird species code format
+            const code = scientificName.toLowerCase().replace(/\s+/g, '_');
+            return `https://www.allaboutbirds.org/guide/${scientificName.replace(/\s+/g, '_')}`;
         }
 
         function groupBirdsByCategory(birds) {
@@ -719,11 +1131,10 @@
                 groups[category].push(bird);
             });
 
-            // Sort categories by number of birds (descending), but keep "Other Birds" at the end
             const sortedGroups = Object.entries(groups)
                 .sort((a, b) => {
-                    if (a[0] === 'Other Birds') return 1;
-                    if (b[0] === 'Other Birds') return -1;
+                    if (a[0] === 'Other') return 1;
+                    if (b[0] === 'Other') return -1;
                     return b[1].length - a[1].length;
                 });
 
@@ -761,14 +1172,19 @@
         }
 
         function createBirdCard(bird, showTime = false) {
+            const cornellUrl = getCornellUrl(bird.scientificName);
+            const category = categorizeBird(bird.commonName);
+            
             return `
-                <div class="bird-card">
+                <div class="bird-card" data-name="${bird.commonName.toLowerCase()}" data-scientific="${bird.scientificName.toLowerCase()}" data-category="${category}">
                     ${bird.thumbnailUrl 
                         ? `<img src="${bird.thumbnailUrl}" alt="${bird.commonName}" class="bird-image" loading="lazy">`
                         : `<div class="bird-image placeholder">🐦</div>`
                     }
                     <div class="bird-info">
-                        <div class="bird-name">${bird.commonName}</div>
+                        <div class="bird-name">
+                            <a href="${cornellUrl}" target="_blank" title="Learn more on All About Birds">${bird.commonName}</a>
+                        </div>
                         <div class="bird-scientific">${bird.scientificName}</div>
                         ${showTime && bird.latestDetectionAt 
                             ? `<div class="bird-time">${formatTime(bird.latestDetectionAt)}</div>` 
@@ -796,7 +1212,6 @@
                 return;
             }
 
-            // Sort by latest detection
             const sorted = [...birds].sort((a, b) => 
                 new Date(b.latestDetectionAt) - new Date(a.latestDetectionAt)
             );
@@ -820,7 +1235,7 @@
             const groupedBirds = groupBirdsByCategory(birds);
             
             container.innerHTML = groupedBirds.map(([category, categoryBirds]) => `
-                <div class="bird-group">
+                <div class="bird-group" data-group-category="${category}">
                     <div class="group-header">
                         <span class="group-icon">${BIRD_CATEGORIES[category]?.icon || '🐦'}</span>
                         <span class="group-title">${category}</span>
@@ -835,6 +1250,235 @@
                     </div>
                 </div>
             `).join('');
+            
+            // Build category filter pills
+            buildCategoryFilters(groupedBirds);
+        }
+
+        function buildCategoryFilters(groupedBirds) {
+            const container = document.getElementById('category-filters');
+            const categories = groupedBirds.map(([cat, birds]) => ({
+                name: cat,
+                count: birds.length,
+                icon: BIRD_CATEGORIES[cat]?.icon || '🐦'
+            }));
+            
+            container.innerHTML = `
+                <button class="filter-pill active" data-category="all">All Birds</button>
+                ${categories.map(cat => `
+                    <button class="filter-pill" data-category="${cat.name}">
+                        <span class="filter-icon">${cat.icon}</span>${cat.name}
+                    </button>
+                `).join('')}
+            `;
+            
+            // Add event listeners
+            container.querySelectorAll('.filter-pill').forEach(pill => {
+                pill.addEventListener('click', () => {
+                    container.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    activeCategory = pill.dataset.category;
+                    applyFilters();
+                });
+            });
+        }
+
+        function applyFilters() {
+            const cards = document.querySelectorAll('#all-birds .bird-card');
+            const groups = document.querySelectorAll('#all-birds .bird-group');
+            const noResults = document.getElementById('no-results');
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const name = card.dataset.name;
+                const scientific = card.dataset.scientific;
+                const category = card.dataset.category;
+                
+                const matchesSearch = !searchQuery || 
+                    name.includes(searchQuery.toLowerCase()) || 
+                    scientific.includes(searchQuery.toLowerCase());
+                    
+                const matchesCategory = activeCategory === 'all' || category === activeCategory;
+                
+                if (matchesSearch && matchesCategory) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Hide empty groups
+            groups.forEach(group => {
+                const visibleCards = group.querySelectorAll('.bird-card:not(.hidden)');
+                if (visibleCards.length === 0) {
+                    group.classList.add('hidden');
+                } else {
+                    group.classList.remove('hidden');
+                }
+            });
+            
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                noResults.classList.add('visible');
+            } else {
+                noResults.classList.remove('visible');
+            }
+        }
+
+        // Insights Functions
+        async function loadInsights() {
+            await Promise.all([
+                loadActivityHeatmap(),
+                loadTopBirds(),
+                loadNewThisMonth()
+            ]);
+        }
+
+        async function loadActivityHeatmap() {
+            const container = document.getElementById('activity-heatmap');
+            
+            try {
+                // Fetch recent detections to analyze times
+                const data = await fetchData('/detections?limit=100');
+                const detections = data.detections || [];
+                
+                // Count detections by hour
+                const hourCounts = new Array(24).fill(0);
+                detections.forEach(det => {
+                    const hour = new Date(det.timestamp).getHours();
+                    hourCounts[hour]++;
+                });
+                
+                const maxCount = Math.max(...hourCounts, 1);
+                
+                container.innerHTML = hourCounts.map((count, hour) => {
+                    const height = Math.max((count / maxCount) * 100, 4);
+                    const label = hour === 0 ? '12a' : hour === 12 ? '12p' : hour > 12 ? `${hour-12}p` : `${hour}a`;
+                    const showLabel = hour % 3 === 0;
+                    
+                    return `
+                        <div class="heatmap-hour">
+                            <div class="heatmap-bar-container">
+                                <div class="heatmap-bar" style="height: ${height}%" title="${count} detections at ${label}"></div>
+                            </div>
+                            <div class="heatmap-label">${showLabel ? label : ''}</div>
+                        </div>
+                    `;
+                }).join('');
+                
+            } catch (error) {
+                container.innerHTML = '<p style="color: var(--text-dim); text-align: center;">Unable to load activity data</p>';
+            }
+        }
+
+        async function loadTopBirds() {
+            const container = document.getElementById('top-birds');
+            
+            try {
+                const data = await fetchData('/species?period=all&limit=10');
+                const birds = data.species || [];
+                
+                if (birds.length === 0) {
+                    container.innerHTML = '<p style="color: var(--text-dim);">No data yet</p>';
+                    return;
+                }
+                
+                const maxDetections = birds[0]?.detections?.total || 1;
+                
+                container.innerHTML = birds.map((bird, index) => {
+                    const percentage = ((bird.detections?.total || 0) / maxDetections) * 100;
+                    const cornellUrl = getCornellUrl(bird.scientificName);
+                    
+                    return `
+                        <div class="top-bird-item">
+                            <div class="top-bird-rank">${index + 1}</div>
+                            ${bird.thumbnailUrl 
+                                ? `<img src="${bird.thumbnailUrl}" alt="${bird.commonName}" class="top-bird-image">`
+                                : ''
+                            }
+                            <div class="top-bird-info">
+                                <div class="top-bird-name">
+                                    <a href="${cornellUrl}" target="_blank">${bird.commonName}</a>
+                                </div>
+                            </div>
+                            <div class="top-bird-bar-container">
+                                <div class="top-bird-bar" style="width: ${percentage}%">
+                                    <span class="top-bird-count">${bird.detections?.total || 0}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+            } catch (error) {
+                container.innerHTML = '<p style="color: var(--text-dim); text-align: center;">Unable to load data</p>';
+            }
+        }
+
+        async function loadNewThisMonth() {
+            const container = document.getElementById('new-birds');
+            
+            try {
+                // Get start of current month
+                const now = new Date();
+                const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+                const fromDate = startOfMonth.toISOString().split('T')[0];
+                
+                // Fetch this month's species
+                const thisMonthData = await fetchData(`/species?from=${fromDate}&limit=100`);
+                const thisMonthBirds = thisMonthData.species || [];
+                
+                // Fetch all-time species to compare
+                const allTimeData = await fetchData('/species?period=all&limit=100');
+                const allTimeBirds = allTimeData.species || [];
+                
+                // Find birds that appeared this month for potentially the first time
+                // (simplification: birds with low total counts that appeared this month)
+                const newBirds = thisMonthBirds
+                    .filter(bird => {
+                        const allTimeBird = allTimeBirds.find(b => b.id === bird.id);
+                        // Consider it "new" if this month's detections are a significant portion of all-time
+                        if (!allTimeBird) return true;
+                        const thisMonthCount = bird.detections?.total || 0;
+                        const allTimeCount = allTimeBird.detections?.total || 0;
+                        return thisMonthCount >= allTimeCount * 0.5 && allTimeCount < 50;
+                    })
+                    .slice(0, 8);
+                
+                if (newBirds.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state" style="padding: 20px;">
+                            <p style="font-size: 0.9rem;">No new visitors this month yet!</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                container.innerHTML = newBirds.map(bird => {
+                    const cornellUrl = getCornellUrl(bird.scientificName);
+                    const date = bird.latestDetectionAt 
+                        ? new Date(bird.latestDetectionAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+                        : '';
+                    
+                    return `
+                        <div class="new-bird-card">
+                            ${bird.thumbnailUrl 
+                                ? `<img src="${bird.thumbnailUrl}" alt="${bird.commonName}" class="new-bird-image">`
+                                : '<div class="new-bird-image" style="background: var(--accent-glow);"></div>'
+                            }
+                            <div class="new-bird-name">
+                                <a href="${cornellUrl}" target="_blank">${bird.commonName}</a>
+                            </div>
+                            <div class="new-bird-date">${date}</div>
+                            <span class="new-badge">New</span>
+                        </div>
+                    `;
+                }).join('');
+                
+            } catch (error) {
+                container.innerHTML = '<p style="color: var(--text-dim); text-align: center;">Unable to load data</p>';
+            }
         }
 
         async function loadData() {
@@ -850,8 +1494,12 @@
 
                 // Fetch all-time species
                 const allSpecies = await fetchData('/species?period=all&limit=100');
-                document.getElementById('all-species').textContent = allSpecies.species?.length || 0;
-                renderAllBirds(allSpecies.species, 'all-birds');
+                allSpeciesData = allSpecies.species || [];
+                document.getElementById('all-species').textContent = allSpeciesData.length;
+                renderAllBirds(allSpeciesData, 'all-birds');
+
+                // Load insights
+                loadInsights();
 
                 // Update timestamp
                 document.getElementById('update-time').textContent = 
@@ -873,14 +1521,18 @@
             }
         }
 
+        // Search functionality
+        document.getElementById('bird-search').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            applyFilters();
+        });
+
         // Tab functionality
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                // Update buttons
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 
-                // Update content
                 const tabId = btn.dataset.tab;
                 document.querySelectorAll('.tab-content').forEach(content => {
                     content.classList.remove('active');
