@@ -836,38 +836,6 @@
             height: auto;
         }
 
-        .trend-tooltip {
-            position: absolute;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 10px 14px;
-            font-size: 0.8rem;
-            color: var(--text-primary);
-            pointer-events: none;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .trend-tooltip.visible {
-            opacity: 1;
-        }
-
-        .trend-tooltip-label {
-            color: var(--text-dim);
-            font-size: 0.7rem;
-            margin-bottom: 2px;
-        }
-
-        .trend-tooltip-value {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
         .trends-legend {
             display: flex;
             justify-content: center;
@@ -889,13 +857,8 @@
             border-radius: 50%;
         }
 
-        .legend-dot.species {
-            background: var(--accent);
-        }
-
-        .legend-dot.detections {
-            background: var(--accent-dim);
-        }
+        .legend-dot.species { background: var(--accent); }
+        .legend-dot.detections { background: var(--accent-dim); }
 
         /* Donut Chart */
         .donut-chart-container {
@@ -959,9 +922,7 @@
             transition: background 0.2s ease;
         }
 
-        .donut-legend-item:hover {
-            background: var(--bg-card-hover);
-        }
+        .donut-legend-item:hover { background: var(--bg-card-hover); }
 
         .donut-legend-swatch {
             width: 12px;
@@ -1016,24 +977,11 @@
             flex-shrink: 0;
         }
 
-        .rarity-info {
-            flex: 1;
-            min-width: 0;
-        }
+        .rarity-info { flex: 1; min-width: 0; }
 
-        .rarity-name {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .rarity-name a {
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .rarity-name a:hover {
-            color: var(--accent);
-        }
+        .rarity-name { font-size: 0.9rem; font-weight: 500; }
+        .rarity-name a { color: var(--text-primary); text-decoration: none; }
+        .rarity-name a:hover { color: var(--accent); }
 
         .rarity-scientific {
             font-size: 0.75rem;
@@ -1049,26 +997,10 @@
             gap: 2px;
         }
 
-        .rarity-stars {
-            display: flex;
-            gap: 2px;
-        }
-
-        .rarity-star {
-            width: 14px;
-            height: 14px;
-            color: var(--accent);
-        }
-
-        .rarity-star.dim {
-            color: var(--text-dim);
-            opacity: 0.3;
-        }
-
-        .rarity-count-label {
-            font-size: 0.65rem;
-            color: var(--text-dim);
-        }
+        .rarity-stars { display: flex; gap: 2px; }
+        .rarity-star { width: 14px; height: 14px; color: var(--accent); }
+        .rarity-star.dim { color: var(--text-dim); opacity: 0.3; }
+        .rarity-count-label { font-size: 0.65rem; color: var(--text-dim); }
 
         .rarity-count-num {
             font-family: 'Fraunces', Georgia, serif;
@@ -1157,15 +1089,15 @@
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number" id="today-count">â€”</div>
+                    <div class="stat-number" id="today-count">—</div>
                     <div class="stat-label">Today</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" id="today-species">â€”</div>
+                    <div class="stat-number" id="today-species">—</div>
                     <div class="stat-label">Species Today</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" id="all-species">â€”</div>
+                    <div class="stat-number" id="all-species">—</div>
                     <div class="stat-label">All Time</div>
                 </div>
             </div>
@@ -1220,7 +1152,7 @@
             </div>
             
             <div id="no-results" class="no-results">
-                <div class="emoji">ðŸ”</div>
+                <div class="emoji">🔍</div>
                 <p>No birds found matching your search.</p>
             </div>
             
@@ -1243,7 +1175,7 @@
                 <!-- Activity Heatmap -->
                 <div class="insight-card full-width">
                     <div class="insight-header">
-                        <span class="insight-icon">ðŸŒ…</span>
+                        <span class="insight-icon">🌅</span>
                         <span class="insight-title">Activity by Hour</span>
                     </div>
                     <div class="heatmap-container">
@@ -1258,7 +1190,7 @@
                 <!-- Top 10 Birds -->
                 <div class="insight-card">
                     <div class="insight-header">
-                        <span class="insight-icon">ðŸ†</span>
+                        <span class="insight-icon">🏆</span>
                         <span class="insight-title">Top 10 Most Heard</span>
                     </div>
                     <div class="top-birds-list" id="top-birds">
@@ -1271,7 +1203,7 @@
                 <!-- New This Month -->
                 <div class="insight-card">
                     <div class="insight-header">
-                        <span class="insight-icon">âœ¨</span>
+                        <span class="insight-icon">✨</span>
                         <span class="insight-title">New This Month</span>
                     </div>
                     <div class="new-birds-grid" id="new-birds">
@@ -1284,7 +1216,7 @@
                 <!-- Seasonal Trends Chart -->
                 <div class="insight-card full-width">
                     <div class="insight-header">
-                        <span class="insight-icon">&#x1F4C8;</span>
+                        <span class="insight-icon">📈</span>
                         <span class="insight-title">Seasonal Trends</span>
                     </div>
                     <div class="trends-chart-container">
@@ -1299,7 +1231,7 @@
                 <!-- Category Breakdown Donut Chart -->
                 <div class="insight-card">
                     <div class="insight-header">
-                        <span class="insight-icon">&#x1F967;</span>
+                        <span class="insight-icon">🥧</span>
                         <span class="insight-title">Category Breakdown</span>
                     </div>
                     <div class="donut-chart-container" id="category-donut">
@@ -1309,10 +1241,10 @@
                     </div>
                 </div>
 
-                <!-- Rarity Score -->
+                <!-- Rarest Visitors -->
                 <div class="insight-card">
                     <div class="insight-header">
-                        <span class="insight-icon">&#x1F48E;</span>
+                        <span class="insight-icon">💎</span>
                         <span class="insight-title">Rarest Visitors</span>
                     </div>
                     <div class="rarity-list" id="rarity-list">
@@ -1336,7 +1268,7 @@
             View full station on BirdWeather
         </a>
         <div class="footer-meta">
-            Auto-refreshes every 5 minutes Â· Last updated: <span id="update-time">â€”</span>
+            Auto-refreshes every 5 minutes &middot; Last updated: <span id="update-time">—</span>
         </div>
     </footer>
 
@@ -1352,51 +1284,51 @@
         // Bird classification by family/type
         const BIRD_CATEGORIES = {
             'Raptors': {
-                icon: 'ðŸ¦…',
+                icon: '🦅',
                 keywords: ['Hawk', 'Eagle', 'Falcon', 'Owl', 'Vulture', 'Kite', 'Osprey', 'Harrier', 'Kestrel']
             },
             'Songbirds': {
-                icon: 'ðŸŽµ',
+                icon: '🎵',
                 keywords: ['Sparrow', 'Finch', 'Warbler', 'Wren', 'Thrush', 'Robin', 'Bluebird', 'Cardinal', 'Bunting', 'Tanager', 'Oriole', 'Grosbeak', 'Towhee', 'Junco', 'Chickadee', 'Titmouse', 'Nuthatch', 'Creeper', 'Kinglet', 'Vireo', 'Catbird', 'Thrasher', 'Mockingbird', 'Starling', 'Waxwing', 'Goldfinch', 'Siskin', 'Redpoll', 'Crossbill']
             },
             'Woodpeckers': {
-                icon: 'ðŸªµ',
+                icon: '🪵',
                 keywords: ['Woodpecker', 'Sapsucker', 'Flicker', 'Pileated']
             },
             'Corvids': {
-                icon: 'ðŸ–¤',
+                icon: '🖤',
                 keywords: ['Crow', 'Raven', 'Jay', 'Magpie']
             },
             'Waterfowl': {
-                icon: 'ðŸ¦†',
+                icon: '🦆',
                 keywords: ['Duck', 'Goose', 'Swan', 'Heron', 'Egret', 'Crane', 'Bittern', 'Cormorant', 'Pelican', 'Loon', 'Grebe', 'Coot', 'Moorhen', 'Gallinule', 'Rail', 'Ibis', 'Merganser', 'Teal', 'Mallard']
             },
             'Shorebirds': {
-                icon: 'ðŸ–ï¸',
+                icon: '🏖️',
                 keywords: ['Sandpiper', 'Plover', 'Killdeer', 'Snipe', 'Woodcock', 'Curlew', 'Godwit', 'Yellowlegs']
             },
             'Gamebirds': {
-                icon: 'ðŸ¦ƒ',
+                icon: '🦃',
                 keywords: ['Turkey', 'Pheasant', 'Quail', 'Grouse', 'Bobwhite']
             },
             'Doves': {
-                icon: 'ðŸ•Šï¸',
+                icon: '🕊️',
                 keywords: ['Dove', 'Pigeon']
             },
             'Hummingbirds': {
-                icon: 'ðŸ’¨',
+                icon: '💨',
                 keywords: ['Hummingbird', 'Swift']
             },
             'Blackbirds': {
-                icon: 'â¬›',
+                icon: '⬛',
                 keywords: ['Blackbird', 'Grackle', 'Cowbird', 'Meadowlark', 'Bobolink']
             },
             'Flycatchers': {
-                icon: 'ðŸª°',
+                icon: '🪰',
                 keywords: ['Flycatcher', 'Phoebe', 'Pewee', 'Kingbird']
             },
             'Other': {
-                icon: 'ðŸ¦',
+                icon: '🐦',
                 keywords: []
             }
         };
@@ -1477,7 +1409,7 @@
                 <div class="bird-card" data-name="${bird.commonName.toLowerCase()}" data-scientific="${bird.scientificName.toLowerCase()}" data-category="${category}">
                     ${bird.thumbnailUrl 
                         ? `<img src="${bird.thumbnailUrl}" alt="${bird.commonName}" class="bird-image" loading="lazy">`
-                        : `<div class="bird-image placeholder">ðŸ¦</div>`
+                        : `<div class="bird-image placeholder">🐦</div>`
                     }
                     <div class="bird-info">
                         <div class="bird-name">
@@ -1503,7 +1435,7 @@
             if (!birds || birds.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
-                        <div class="emoji">ðŸŒ…</div>
+                        <div class="emoji">🌅</div>
                         <p>No birds detected yet today. Check back soon!</p>
                     </div>
                 `;
@@ -1523,7 +1455,7 @@
             if (!birds || birds.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
-                        <div class="emoji">ðŸ”</div>
+                        <div class="emoji">🔍</div>
                         <p>No species recorded yet.</p>
                     </div>
                 `;
@@ -1535,7 +1467,7 @@
             container.innerHTML = groupedBirds.map(([category, categoryBirds]) => `
                 <div class="bird-group" data-group-category="${category}">
                     <div class="group-header">
-                        <span class="group-icon">${BIRD_CATEGORIES[category]?.icon || 'ðŸ¦'}</span>
+                        <span class="group-icon">${BIRD_CATEGORIES[category]?.icon || '🐦'}</span>
                         <span class="group-title">${category}</span>
                         <span class="group-count">${categoryBirds.length} species</span>
                     </div>
@@ -1558,7 +1490,7 @@
             const categories = groupedBirds.map(([cat, birds]) => ({
                 name: cat,
                 count: birds.length,
-                icon: BIRD_CATEGORIES[cat]?.icon || 'ðŸ¦'
+                icon: BIRD_CATEGORIES[cat]?.icon || '🐦'
             }));
             
             container.innerHTML = `
@@ -1784,13 +1716,9 @@
 
         async function loadSeasonalTrends() {
             const container = document.getElementById('seasonal-trends');
-            
             try {
-                // Fetch monthly data for the past 12 months
                 const now = new Date();
-                const monthData = [];
                 const fetchPromises = [];
-                
                 for (let i = 11; i >= 0; i--) {
                     const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
                     const from = date.toISOString().split('T')[0];
@@ -1798,48 +1726,33 @@
                     const to = nextMonth.toISOString().split('T')[0];
                     const label = date.toLocaleDateString('en-US', { month: 'short' });
                     const year = date.getFullYear();
-                    
                     fetchPromises.push(
                         fetchData(`/species?from=${from}&to=${to}&limit=200`)
                             .then(data => ({
-                                month: label,
-                                year: year,
+                                month: label, year,
                                 species: data.species?.length || 0,
                                 detections: (data.species || []).reduce((sum, s) => sum + (s.detections?.total || 0), 0),
                                 index: 11 - i
                             }))
-                            .catch(() => ({ month: label, year: year, species: 0, detections: 0, index: 11 - i }))
+                            .catch(() => ({ month: label, year, species: 0, detections: 0, index: 11 - i }))
                     );
                 }
-                
-                const results = await Promise.all(fetchPromises);
-                results.sort((a, b) => a.index - b.index);
-                
+                const results = (await Promise.all(fetchPromises)).sort((a, b) => a.index - b.index);
                 const maxSpecies = Math.max(...results.map(r => r.species), 1);
                 const maxDetections = Math.max(...results.map(r => r.detections), 1);
-                
-                // SVG dimensions
-                const svgW = 700, svgH = 200;
-                const padL = 40, padR = 20, padT = 20, padB = 40;
-                const chartW = svgW - padL - padR;
-                const chartH = svgH - padT - padB;
-                
-                // Create line paths
-                const speciesPoints = results.map((d, i) => {
-                    const x = padL + (i / (results.length - 1)) * chartW;
-                    const y = padT + chartH - (d.species / maxSpecies) * chartH;
-                    return { x, y, ...d };
-                });
-                
-                const detectionsPoints = results.map((d, i) => {
-                    const x = padL + (i / (results.length - 1)) * chartW;
-                    const y = padT + chartH - (d.detections / maxDetections) * chartH;
-                    return { x, y, ...d };
-                });
-                
-                function pointsToPath(pts) {
-                    if (pts.length === 0) return '';
-                    // Smooth curve using cardinal spline approximation
+                const svgW = 700, svgH = 200, padL = 40, padR = 20, padT = 20, padB = 40;
+                const chartW = svgW - padL - padR, chartH = svgH - padT - padB;
+
+                const speciesPoints = results.map((d, i) => ({
+                    x: padL + (i / (results.length - 1)) * chartW,
+                    y: padT + chartH - (d.species / maxSpecies) * chartH, ...d
+                }));
+                const detectionsPoints = results.map((d, i) => ({
+                    x: padL + (i / (results.length - 1)) * chartW,
+                    y: padT + chartH - (d.detections / maxDetections) * chartH, ...d
+                }));
+
+                function toPath(pts) {
                     let d = `M ${pts[0].x},${pts[0].y}`;
                     for (let i = 1; i < pts.length; i++) {
                         const cp1x = pts[i-1].x + (pts[i].x - pts[i-1].x) / 3;
@@ -1848,38 +1761,25 @@
                     }
                     return d;
                 }
-                
-                function pointsToArea(pts) {
-                    const path = pointsToPath(pts);
+                function toArea(pts) {
                     const bottom = padT + chartH;
-                    return `${path} L ${pts[pts.length-1].x},${bottom} L ${pts[0].x},${bottom} Z`;
+                    return `${toPath(pts)} L ${pts[pts.length-1].x},${bottom} L ${pts[0].x},${bottom} Z`;
                 }
-                
-                const speciesPath = pointsToPath(speciesPoints);
-                const speciesArea = pointsToArea(speciesPoints);
-                const detectionsPath = pointsToPath(detectionsPoints);
-                const detectionsArea = pointsToArea(detectionsPoints);
-                
-                // Grid lines
+
                 const gridLines = [0, 0.25, 0.5, 0.75, 1].map(pct => {
                     const y = padT + chartH - pct * chartH;
-                    const val = Math.round(pct * maxSpecies);
                     return `<line x1="${padL}" y1="${y}" x2="${svgW - padR}" y2="${y}" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                            <text x="${padL - 8}" y="${y + 4}" fill="var(--text-dim)" font-size="10" text-anchor="end">${val}</text>`;
+                            <text x="${padL - 8}" y="${y + 4}" fill="var(--text-dim)" font-size="10" text-anchor="end">${Math.round(pct * maxSpecies)}</text>`;
                 }).join('');
-                
-                // Month labels
-                const monthLabels = speciesPoints.map(p => 
+
+                const monthLabels = speciesPoints.map(p =>
                     `<text x="${p.x}" y="${svgH - 8}" fill="var(--text-dim)" font-size="10" text-anchor="middle">${p.month}</text>`
                 ).join('');
-                
-                // Data dots for species
-                const speciesDots = speciesPoints.map(p =>
-                    `<circle cx="${p.x}" cy="${p.y}" r="4" fill="var(--accent)" stroke="var(--bg-card)" stroke-width="2">
-                        <title>${p.month} ${p.year}: ${p.species} species, ${p.detections.toLocaleString()} detections</title>
-                    </circle>`
+
+                const dots = speciesPoints.map(p =>
+                    `<circle cx="${p.x}" cy="${p.y}" r="4" fill="var(--accent)" stroke="var(--bg-card)" stroke-width="2"><title>${p.month} ${p.year}: ${p.species} species, ${p.detections.toLocaleString()} detections</title></circle>`
                 ).join('');
-                
+
                 container.innerHTML = `
                     <svg viewBox="0 0 ${svgW} ${svgH}" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -1894,18 +1794,16 @@
                         </defs>
                         ${gridLines}
                         ${monthLabels}
-                        <path d="${detectionsArea}" fill="url(#detectionsGrad)"/>
-                        <path d="${detectionsPath}" fill="none" stroke="var(--accent-dim)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-                        <path d="${speciesArea}" fill="url(#speciesGrad)"/>
-                        <path d="${speciesPath}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
-                        ${speciesDots}
+                        <path d="${toArea(detectionsPoints)}" fill="url(#detectionsGrad)"/>
+                        <path d="${toPath(detectionsPoints)}" fill="none" stroke="var(--accent-dim)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                        <path d="${toArea(speciesPoints)}" fill="url(#speciesGrad)"/>
+                        <path d="${toPath(speciesPoints)}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+                        ${dots}
                     </svg>
                     <div class="trends-legend">
                         <div class="legend-item"><div class="legend-dot species"></div>Species Count</div>
                         <div class="legend-item"><div class="legend-dot detections"></div>Detections</div>
-                    </div>
-                `;
-                
+                    </div>`;
             } catch (error) {
                 container.innerHTML = '<p style="color: var(--text-dim); text-align: center;">Unable to load seasonal trends</p>';
             }
@@ -1913,79 +1811,48 @@
 
         async function loadCategoryDonut() {
             const container = document.getElementById('category-donut');
-            
             try {
-                // Wait for allSpeciesData to be available
                 if (!allSpeciesData || allSpeciesData.length === 0) {
                     const allSpecies = await fetchData('/species?period=all&limit=100');
                     allSpeciesData = allSpecies.species || [];
                 }
-                
-                // Group species by category
                 const categoryCounts = {};
                 allSpeciesData.forEach(bird => {
                     const cat = categorizeBird(bird.commonName);
                     categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
                 });
-                
-                const sorted = Object.entries(categoryCounts)
-                    .sort((a, b) => b[1] - a[1]);
-                
-                const total = sorted.reduce((sum, [, count]) => sum + count, 0);
-                
-                // Color palette matching the dark nature theme
-                const colors = [
-                    '#7dd3a8', '#4a9b73', '#3d8b65', '#5ec49a',
-                    '#2d7a56', '#8ee0b8', '#6bc994', '#3a7d5e',
-                    '#a0e8c8', '#4db07f', '#2e6b4a', '#75cfaa'
-                ];
-                
-                // Build donut SVG
+                const sorted = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1]);
+                const total = sorted.reduce((sum, [, c]) => sum + c, 0);
+
+                const colors = ['#7dd3a8','#4a9b73','#3d8b65','#5ec49a','#2d7a56','#8ee0b8','#6bc994','#3a7d5e','#a0e8c8','#4db07f','#2e6b4a','#75cfaa'];
                 const cx = 110, cy = 110, r = 85, strokeW = 28;
-                const circumference = 2 * Math.PI * r;
+                const circ = 2 * Math.PI * r;
                 let offset = 0;
-                
+
                 const segments = sorted.map(([cat, count], i) => {
-                    const pct = count / total;
-                    const dashLen = pct * circumference;
-                    const dashGap = circumference - dashLen;
-                    const color = colors[i % colors.length];
-                    const segment = `<circle cx="${cx}" cy="${cy}" r="${r}" 
-                        fill="none" stroke="${color}" stroke-width="${strokeW}"
-                        stroke-dasharray="${dashLen} ${dashGap}" 
-                        stroke-dashoffset="${-offset}"
-                        style="transition: stroke-dashoffset 0.5s ease;">
-                        <title>${cat}: ${count} species (${Math.round(pct * 100)}%)</title>
-                    </circle>`;
+                    const dashLen = (count / total) * circ;
+                    const seg = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${colors[i % colors.length]}" stroke-width="${strokeW}" stroke-dasharray="${dashLen} ${circ - dashLen}" stroke-dashoffset="${-offset}"><title>${cat}: ${count} species (${Math.round(count/total*100)}%)</title></circle>`;
                     offset += dashLen;
-                    return segment;
+                    return seg;
                 }).join('');
-                
-                const legendItems = sorted.map(([cat, count], i) => {
-                    const icon = BIRD_CATEGORIES[cat]?.icon || '';
-                    const color = colors[i % colors.length];
-                    return `
-                        <div class="donut-legend-item">
-                            <div class="donut-legend-swatch" style="background: ${color}"></div>
-                            <span class="donut-legend-name">${icon} ${cat}</span>
-                            <span class="donut-legend-count">${count}</span>
-                        </div>
-                    `;
-                }).join('');
-                
+
+                const legendItems = sorted.map(([cat, count], i) =>
+                    `<div class="donut-legend-item">
+                        <div class="donut-legend-swatch" style="background:${colors[i % colors.length]}"></div>
+                        <span class="donut-legend-name">${BIRD_CATEGORIES[cat]?.icon || ''} ${cat}</span>
+                        <span class="donut-legend-count">${count}</span>
+                    </div>`
+                ).join('');
+
                 container.innerHTML = `
                     <div class="donut-svg-wrap">
-                        <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-                            ${segments}
-                        </svg>
+                        <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">${segments}</svg>
                         <div class="donut-center-label">
                             <div class="donut-center-number">${total}</div>
                             <div class="donut-center-text">Species</div>
                         </div>
                     </div>
-                    <div class="donut-legend">${legendItems}</div>
-                `;
-                
+                    <div class="donut-legend">${legendItems}</div>`;
             } catch (error) {
                 container.innerHTML = '<p style="color: var(--text-dim); text-align: center;">Unable to load category data</p>';
             }
@@ -1993,66 +1860,53 @@
 
         async function loadRarityScore() {
             const container = document.getElementById('rarity-list');
-            
             try {
-                // Wait for allSpeciesData to be available
                 if (!allSpeciesData || allSpeciesData.length === 0) {
                     const allSpecies = await fetchData('/species?period=all&limit=100');
                     allSpeciesData = allSpecies.species || [];
                 }
-                
-                // Sort by fewest detections (rarest)
                 const rareBirds = [...allSpeciesData]
                     .filter(b => (b.detections?.total || 0) > 0)
                     .sort((a, b) => (a.detections?.total || 0) - (b.detections?.total || 0))
                     .slice(0, 8);
-                
+
                 if (rareBirds.length === 0) {
                     container.innerHTML = '<p style="color: var(--text-dim);">No data yet</p>';
                     return;
                 }
-                
-                // Calculate rarity stars (fewer detections = more stars, max 5)
-                const maxForScale = rareBirds[rareBirds.length - 1]?.detections?.total || 10;
-                
-                function getRarityStars(detections) {
-                    if (detections <= 2) return 5;
-                    if (detections <= 5) return 4;
-                    if (detections <= 10) return 3;
-                    if (detections <= 25) return 2;
+
+                function getRarityStars(d) {
+                    if (d <= 2) return 5;
+                    if (d <= 5) return 4;
+                    if (d <= 10) return 3;
+                    if (d <= 25) return 2;
                     return 1;
                 }
-                
-                const starSvg = `<svg class="rarity-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
-                const starDimSvg = `<svg class="rarity-star dim" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
-                
+                const starSvg = '<svg class="rarity-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+                const starDimSvg = '<svg class="rarity-star dim" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+
                 container.innerHTML = rareBirds.map(bird => {
-                    const cornellUrl = getCornellUrl(bird.scientificName);
-                    const detections = bird.detections?.total || 0;
-                    const stars = getRarityStars(detections);
+                    const url = getCornellUrl(bird.scientificName);
+                    const det = bird.detections?.total || 0;
+                    const stars = getRarityStars(det);
                     const starsHtml = Array(5).fill(0).map((_, i) => i < stars ? starSvg : starDimSvg).join('');
-                    
                     return `
                         <div class="rarity-item">
-                            ${bird.thumbnailUrl 
+                            ${bird.thumbnailUrl
                                 ? `<img src="${bird.thumbnailUrl}" alt="${bird.commonName}" class="rarity-image" loading="lazy">`
-                                : `<div class="rarity-image" style="display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:var(--accent-glow);">&#x1F426;</div>`
+                                : '<div class="rarity-image" style="display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:var(--accent-glow);">🐦</div>'
                             }
                             <div class="rarity-info">
-                                <div class="rarity-name">
-                                    <a href="${cornellUrl}" target="_blank">${bird.commonName}</a>
-                                </div>
+                                <div class="rarity-name"><a href="${url}" target="_blank">${bird.commonName}</a></div>
                                 <div class="rarity-scientific">${bird.scientificName}</div>
                             </div>
                             <div class="rarity-badge">
                                 <div class="rarity-stars">${starsHtml}</div>
-                                <div class="rarity-count-num">${detections}</div>
+                                <div class="rarity-count-num">${det}</div>
                                 <div class="rarity-count-label">detections</div>
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                 }).join('');
-                
             } catch (error) {
                 container.innerHTML = '<p style="color: var(--text-dim); text-align: center;">Unable to load rarity data</p>';
             }
